@@ -1,0 +1,24 @@
+// {
+//   "compilerOptions": {
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true,
+//     "baseUrl": ".",
+//     "paths": {
+//       "*": [
+//         "./app/*"
+//       ]
+//     }
+//   }
+// }
+{
+  "compilerOptions": {
+    "baseUrl": "app",
+    "module": "commonjs",
+    "target": "es2016",
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+  ]
+}
