@@ -17,8 +17,8 @@ import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
-// Import root app
-import App from 'containers/App';
+// Import root scenes
+import App from 'scenes/App';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';

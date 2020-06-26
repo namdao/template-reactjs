@@ -13,7 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import NotFoundPage from 'scenes/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -31,10 +31,7 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js namdao"
-        defaultTitle="React.js Boilerplate"
-      >
+      <Helmet titleTemplate="%s - React.js" defaultTitle="React.js Boilerplate">
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />

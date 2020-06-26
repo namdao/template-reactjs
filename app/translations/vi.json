@@ -1,8 +1,8 @@
 {
   "boilerplate.components.Footer.author.message": "Tac gia la {author}.",
   "boilerplate.components.Footer.license.message": "Dieses Projekt wird unter der MIT-Lizenz veröffentlicht.",
-  "boilerplate.components.Header.features": "",
-  "boilerplate.components.Header.home": "",
+  "boilerplate.components.Header.features": "Tính năng",
+  "boilerplate.components.Header.home": "Trang chủ",
   "boilerplate.containers.FeaturePage.css.header": "",
   "boilerplate.containers.FeaturePage.css.message": "Die nächste Generation von CSS",
   "boilerplate.containers.FeaturePage.feedback.header": "Sofortiges Feedback",
@@ -25,7 +25,7 @@
   "boilerplate.containers.HomePage.tryme.atPrefix": "",
   "boilerplate.containers.HomePage.tryme.header": "Probiere mich!",
   "boilerplate.containers.HomePage.tryme.message": "Zeige die Github Repositories von",
-  "boilerplate.containers.LocaleToggle.de": "",
-  "boilerplate.containers.LocaleToggle.en": "",
+  "boilerplate.containers.LocaleToggle.vi": "vi",
+  "boilerplate.containers.LocaleToggle.en": "en",
   "boilerplate.containers.NotFoundPage.header": "Seite nicht gefunden."
 }

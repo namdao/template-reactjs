@@ -11,7 +11,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import NotFoundPage from 'scenes/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
 

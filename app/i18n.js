@@ -16,7 +16,7 @@
 const enTranslationMessages = require('./translations/en.json');
 const viTranslationMessages = require('./translations/vi.json');
 
-const DEFAULT_LOCALE = 'vi';
+const DEFAULT_LOCALE = 'en';
 
 // prettier-ignore
 const appLocales = [
@@ -44,7 +44,9 @@ const translationMessages = {
   vi: formatTranslationMessages('vi', viTranslationMessages),
 };
 
-exports.appLocales = appLocales;
-exports.formatTranslationMessages = formatTranslationMessages;
-exports.translationMessages = translationMessages;
-exports.DEFAULT_LOCALE = DEFAULT_LOCALE;
+export {
+  appLocales,
+  formatTranslationMessages,
+  translationMessages,
+  DEFAULT_LOCALE,
+};
