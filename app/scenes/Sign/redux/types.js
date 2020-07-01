@@ -1,0 +1,3 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const REQUEST_LOGIN = 'REQUEST_LOGIN';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';

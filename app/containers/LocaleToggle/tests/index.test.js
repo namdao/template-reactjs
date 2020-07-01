@@ -4,10 +4,10 @@ import { browserHistory } from 'react-router-dom';
 import { render } from 'react-testing-library';
 
 import LocaleToggle, { mapDispatchToProps } from '../index';
-import { changeLocale } from '../../LanguageProvider/actions';
-import LanguageProvider from '../../LanguageProvider';
+import { changeLocale } from '../../../service/language/actions';
+import LanguageProvider from '../../../service/language';
 
-import configureStore from '../../../configureStore';
+import configureStore from '../../../storeConfig/configureStore';
 import { translationMessages } from '../../../i18n';
 
 describe('<LocaleToggle />', () => {

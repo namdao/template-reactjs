@@ -12,6 +12,7 @@ import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
@@ -21,15 +22,17 @@ import 'sanitize.css/sanitize.css';
 import App from 'scenes/App';
 
 // Import Language Provider
-import LanguageProvider from 'containers/LanguageProvider';
+import LanguageProvider from 'service/language';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
 
-import configureStore from './configureStore';
+// Import store redux persist
+import storeConfig from 'storeConfig';
 
 // Import i18n messages
+import Circle from 'components/LoadingIndicator/Circle';
 import { translationMessages } from './i18n';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -42,18 +45,20 @@ openSansObserver.load().then(() => {
 });
 
 // Create redux store with history
-const initialState = {};
-const store = configureStore(initialState, history);
+// const initialState = {};
+// const store = storeConfig.configureStore();
 const MOUNT_NODE = document.getElementById('app');
 
 const render = (messages) => {
   ReactDOM.render(
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </LanguageProvider>
+    <Provider store={storeConfig.store}>
+      <PersistGate loading={<Circle />} persistor={storeConfig.persistor}>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <App />
+          </ConnectedRouter>
+        </LanguageProvider>
+      </PersistGate>
     </Provider>,
     MOUNT_NODE,
   );

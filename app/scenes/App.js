@@ -13,9 +13,9 @@ import styled from 'styled-components';
 // import HomePage from 'containers/HomePage/Loadable';
 // import FeaturePage from 'containers/FeaturePage';
 // import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Routes from 'routes';
+import Routes from 'service/routes';
+import CommonService from 'service/commonService';
 import GlobalStyle from '../global-styles';
 
 const AppWrapper = styled.div`
@@ -29,11 +29,12 @@ const AppWrapper = styled.div`
 
 const App = () => (
   <AppWrapper>
-    <Helmet titleTemplate="%s - React.js" defaultTitle="React.js Boilerplate">
-      <meta name="description" content="A React.js Boilerplate application" />
-    </Helmet>
-    <Header />
+    <Helmet
+      titleTemplate="%s - React.js"
+      defaultTitle="React.js Boilerplate"
+    ></Helmet>
     <Routes />
+    <CommonService />
     <Footer />
     <GlobalStyle />
   </AppWrapper>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import * as RouteConstants from 'routes/constants';
+import RouteConstants from 'service/routes/constants';
 import PropTypes from 'prop-types';
 
 class PrivateRoute extends React.PureComponent {
@@ -14,7 +14,7 @@ class PrivateRoute extends React.PureComponent {
       redirect_url: redirectUrl,
       ...rest
     } = this.props || {};
-    const redirect = redirectUrl || RouteConstants.SIGN_IN;
+    const redirect = redirectUrl || RouteConstants.PUBLIC.SIGN_IN;
     return [
       <Route
         key={`${key}_${index}`}

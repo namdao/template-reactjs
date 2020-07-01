@@ -1,5 +1,18 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { requestLogin } from 'scenes/Sign/redux/actions';
+import SignIn from './SignIn';
 
-const SignIn = () => <h1>SignIn</h1>;
-
-export default SignIn;
+const mapDispatchToProps = (dispatch) => {
+  const binActionCreators = bindActionCreators(
+    {
+      requestLogin,
+    },
+    dispatch,
+  );
+  return {
+    ...binActionCreators,
+  };
+};
+const connectProps = connect(null, mapDispatchToProps)(SignIn);
+export default connectProps;

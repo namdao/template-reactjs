@@ -6,7 +6,7 @@ import produce from 'immer';
 import { memoryHistory } from 'react-router-dom';
 import identity from 'lodash/identity';
 
-import configureStore from '../../configureStore';
+import configureStore from '../../storeConfig/configureStore';
 
 import getInjectors, { injectReducerFactory } from '../reducerInjectors';
 
@@ -16,7 +16,7 @@ const initialState = { reduced: 'soon' };
 
 /* eslint-disable default-case, no-param-reassign */
 const reducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
       case 'TEST':
         draft.reduced = action.payload;

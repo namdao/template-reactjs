@@ -8,14 +8,14 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import { render } from 'react-testing-library';
 
-import configureStore from '../../configureStore';
+import configureStore from '../../storeConfig/configureStore';
 import injectReducer, { useInjectReducer } from '../injectReducer';
 import * as reducerInjectors from '../reducerInjectors';
 
 // Fixtures
 const Component = () => null;
 
-const reducer = s => s;
+const reducer = (s) => s;
 
 describe('injectReducer decorator', () => {
   let store;

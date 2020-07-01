@@ -12,6 +12,14 @@ module.exports = {
     'styled-components',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-proposal-optional-chaining',
+    [
+      'import',
+      {
+        libraryName: 'antd',
+        css: false,
+      },
+    ],
   ],
   env: {
     production: {

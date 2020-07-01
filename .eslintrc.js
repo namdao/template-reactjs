@@ -25,6 +25,21 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],
+    "no-unused-expressions": [
+      "error",
+      {
+        allowShortCircuit: true,
+      },
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        props: false
+      }
+    ],
+    "consistent-return": [
+      0,
+    ],
     'class-methods-use-this': 0,
     'import/imports-first': 0,
     'import/newline-after-import': 0,
@@ -78,6 +93,9 @@ module.exports = {
     'redux-saga/no-yield-in-race': 2,
     'redux-saga/yield-effects': 2,
     'require-yield': 0,
+    "react/prop-types": 1,
+    "react/no-did-update-set-state": 0,
+    "react/state-in-constructor": 0,
   },
   settings: {
     'import/resolver': {
