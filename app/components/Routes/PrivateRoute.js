@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import RouteConstants from 'service/routes/constants';
+import Dashboard from 'layout/Dashboard/dashboard';
+import Default from 'layout/Default/default';
 import PropTypes from 'prop-types';
 
 class PrivateRoute extends React.PureComponent {
@@ -15,22 +17,25 @@ class PrivateRoute extends React.PureComponent {
       ...rest
     } = this.props || {};
     const redirect = redirectUrl || RouteConstants.PUBLIC.SIGN_IN;
-    return [
+    const LayoutComponent = authenticated ? Dashboard : Default;
+    return (
       <Route
         key={`${key}_${index}`}
         path={path}
         {...rest}
-        render={(props) =>
-          authenticated === true ? (
-            <Component />
-          ) : (
-            <Redirect
-              to={{ pathname: redirect, state: { from: props.location } }}
-            />
-          )
-        }
-      />,
-    ];
+        render={(props) => (
+          <LayoutComponent>
+            {authenticated === true ? (
+              <Component />
+            ) : (
+              <Redirect
+                to={{ pathname: redirect, state: { from: props.location } }}
+              />
+            )}
+          </LayoutComponent>
+        )}
+      />
+    );
   }
 }
 

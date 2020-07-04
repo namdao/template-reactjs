@@ -1,0 +1,9 @@
+.default-layout {
+    min-height: 100vh;
+    background-color: #ecf3f0;
+}
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+};
