@@ -186,9 +186,9 @@ const setupOnResponseInterceptors = (
   };
 
   // Check interceptor DEFAULT exist in list handlers
-  interceptorsInstance.response.use(onResponseSuccess, onResponseError);
-  // if (interceptorsInstance?.response?.handlers?.length < 1) {
-  // }
+  if (interceptorsInstance?.response?.handlers?.length < 1) {
+    interceptorsInstance.response.use(onResponseSuccess, onResponseError);
+  }
 };
 
 const SetupAxios = {

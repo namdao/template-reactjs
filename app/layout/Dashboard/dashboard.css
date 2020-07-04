@@ -19,3 +19,7 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+.breadcrumb {
+  flex:1;
+  padding: 20px 0;
+}

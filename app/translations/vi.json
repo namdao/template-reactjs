@@ -27,5 +27,10 @@
   "boilerplate.containers.HomePage.tryme.message": "Zeige die Github Repositories von",
   "boilerplate.containers.LocaleToggle.vi": "vi",
   "boilerplate.containers.LocaleToggle.en": "en",
-  "boilerplate.containers.NotFoundPage.header": "Seite nicht gefunden."
+  "boilerplate.containers.NotFoundPage.header": "Seite nicht gefunden.",
+  "routing.constant.dashboard": "Trang chủ",
+  "routing.constant.signin": "Đăng nhập",
+  "routing.constant.signout": "Đăng xuất",
+  "routing.constant.notfound": "Không tìm thấy",
+  "routing.constant.user": "Thông tin cá nhân"
 }

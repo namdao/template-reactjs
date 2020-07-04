@@ -4,13 +4,15 @@ import RouteConstants from 'service/routes/constants';
 import Dashboard from 'layout/Dashboard/dashboard';
 import Default from 'layout/Default/default';
 import PropTypes from 'prop-types';
+import ROUTES from 'service/routes/routesList';
+import { getBreadCrumb } from 'utils/utility';
 
 class PrivateRoute extends React.PureComponent {
   render() {
     const {
       component: Component,
       authenticated,
-      key,
+      keyName,
       index,
       path,
       redirect_url: redirectUrl,
@@ -20,20 +22,23 @@ class PrivateRoute extends React.PureComponent {
     const LayoutComponent = authenticated ? Dashboard : Default;
     return (
       <Route
-        key={`${key}_${index}`}
+        key={`${keyName}_${index}`}
         path={path}
         {...rest}
-        render={(props) => (
-          <LayoutComponent>
-            {authenticated === true ? (
-              <Component />
-            ) : (
-              <Redirect
-                to={{ pathname: redirect, state: { from: props.location } }}
-              />
-            )}
-          </LayoutComponent>
-        )}
+        render={(props) => {
+          const crumbs = getBreadCrumb(props, ROUTES.PRIVATE);
+          return (
+            <LayoutComponent listBreadCrumb={crumbs}>
+              {authenticated === true ? (
+                <Component />
+              ) : (
+                <Redirect
+                  to={{ pathname: redirect, state: { from: props.location } }}
+                />
+              )}
+            </LayoutComponent>
+          );
+        }}
       />
     );
   }

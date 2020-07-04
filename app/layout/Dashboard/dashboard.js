@@ -9,13 +9,38 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 import Footer from 'components/Footer';
 
 const { Header, Sider, Content } = Layout;
 
-class SiderDemo extends React.Component {
+class Dashboard extends React.Component {
   state = {
     collapsed: false,
+  };
+
+  renderBreadCumb = () => {
+    const { listBreadCrumb } = this.props;
+    if (listBreadCrumb.length < 1) return null;
+    return (
+      <Breadcrumb className="breadcrumb">
+        {listBreadCrumb.map(({ alias, keyName, path }, index) => {
+          const last = listBreadCrumb.length - 1 === index;
+          const hasLink = last ? null : path;
+          return (
+            <Breadcrumb.Item key={keyName}>
+              <a href={hasLink}>
+                {typeof alias === 'object' ? (
+                  <FormattedMessage {...alias} />
+                ) : (
+                  <span>{alias}</span>
+                )}
+              </a>
+            </Breadcrumb.Item>
+          );
+        })}
+      </Breadcrumb>
+    );
   };
 
   toggle = () => {
@@ -57,10 +82,7 @@ class SiderDemo extends React.Component {
               margin: '0 16px',
             }}
           >
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+            {this.renderBreadCumb()}
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: '90%' }}
@@ -75,4 +97,4 @@ class SiderDemo extends React.Component {
   }
 }
 
-export default SiderDemo;
+export default Dashboard;

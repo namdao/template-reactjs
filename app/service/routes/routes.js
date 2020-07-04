@@ -11,13 +11,19 @@ const Routes = ({ token }) => {
     <Switch>
       {RoutesList.PRIVATE.map((privateRoute, index) => (
         <PrivateRoute
+          key={privateRoute.keyName}
           authenticated={authenticated}
           {...privateRoute}
-          {...index}
+          index={index}
         />
       ))}
       {RoutesList.PUBLIC.map((publicRoute, index) => (
-        <PublicRoute {...publicRoute} {...index} />
+        <PublicRoute
+          key={publicRoute.keyName}
+          {...publicRoute}
+          index={index}
+          authenticated={authenticated}
+        />
       ))}
     </Switch>
   );

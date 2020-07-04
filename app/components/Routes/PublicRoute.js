@@ -1,21 +1,35 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Default from 'layout/Default/default';
+import ROUTE_CONSTANTS from 'service/routes/constants';
 
 class PublicRoute extends React.PureComponent {
   render() {
-    const { component: Component, external, key, index, ...rest } =
-      this.props || {};
+    const {
+      component: Component,
+      external,
+      keyName,
+      authenticated,
+      index,
+      ...rest
+    } = this.props || {};
+    const isRedirect =
+      keyName === ROUTE_CONSTANTS.PUBLIC.SIGN_IN ||
+      keyName === ROUTE_CONSTANTS.PUBLIC.SIGN_UP;
     return (
       <Route
-        key={`${key}_${index}`}
+        key={`${keyName}_${index}`}
         {...rest}
-        render={(props) => (
-          <Default>
-            <Component {...props} {...rest} />
-          </Default>
-        )}
+        render={(props) =>
+          authenticated === true && isRedirect ? (
+            <Redirect to={{ pathname: '/' }} />
+          ) : (
+            <Default>
+              <Component key={`${keyName}_${index}`} {...props} {...rest} />
+            </Default>
+          )
+        }
       />
     );
   }

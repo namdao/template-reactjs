@@ -26,3 +26,33 @@ export const compareObject = (obj1, obj2) => {
   const isEqual = lodash.isEqual(obj1, obj2);
   return isEqual;
 };
+
+export const getBreadCrumb = (currentRoute, ListRoutes) => {
+  const crumbsFilter = ListRoutes.filter(({ path }) => {
+    if (path === '/' && currentRoute.match.path !== path) return null;
+    return currentRoute.match.path.includes(path);
+  }).map(({ path, alias, ...rest }) => {
+    const getPathWithParam = () => {
+      const params = Object.keys(currentRoute.match.params);
+      let pathReplace = '';
+      params.forEach((value) => {
+        pathReplace = currentRoute.match.path.replace(
+          `:${value}`,
+          currentRoute.match.params[value],
+        );
+      });
+      return pathReplace;
+    };
+    const pathRoute =
+      path === currentRoute.match.path ? getPathWithParam() : path;
+    const aliasParams = currentRoute.match?.params[alias]
+      ? currentRoute.match.params[alias]
+      : alias;
+    return {
+      ...rest,
+      alias: aliasParams,
+      path: pathRoute,
+    };
+  });
+  return crumbsFilter;
+};

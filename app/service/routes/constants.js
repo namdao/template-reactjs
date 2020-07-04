@@ -6,6 +6,7 @@ const ROUTE_CONSTANTS = {
   },
   PRIVATE: {
     USERS: 'users',
+    USERS_DETAIL: 'user-detail',
     DASHBOARD: 'dashboard',
   },
 };
