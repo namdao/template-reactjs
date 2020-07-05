@@ -5,6 +5,11 @@ import Default from 'layout/Default/default';
 import ROUTE_CONSTANTS from 'service/routes/constants';
 
 class PublicRoute extends React.PureComponent {
+  routeRedirect = [
+    ROUTE_CONSTANTS.PUBLIC.SIGN_IN,
+    ROUTE_CONSTANTS.PUBLIC.SIGN_UP,
+  ];
+
   render() {
     const {
       component: Component,
@@ -14,9 +19,7 @@ class PublicRoute extends React.PureComponent {
       index,
       ...rest
     } = this.props || {};
-    const isRedirect =
-      keyName === ROUTE_CONSTANTS.PUBLIC.SIGN_IN ||
-      keyName === ROUTE_CONSTANTS.PUBLIC.SIGN_UP;
+    const isRedirect = this.routeRedirect.includes(keyName);
     return (
       <Route
         key={`${keyName}_${index}`}

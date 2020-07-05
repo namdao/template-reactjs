@@ -1,6 +1,8 @@
+import { HomeFilled, UserOutlined } from '@ant-design/icons';
 import ROUTE_CONSTANTS from './constants';
 import Pages from './pages';
 import message from './message';
+
 const ROUTES = {
   PUBLIC: [
     {
@@ -38,6 +40,20 @@ const ROUTES = {
       path: '/',
       exact: true,
       component: Pages[ROUTE_CONSTANTS.PRIVATE.DASHBOARD],
+    },
+  ],
+  MENU: [
+    {
+      key: 0,
+      alias: message.dashboard,
+      path: '/',
+      icon: HomeFilled,
+    },
+    {
+      key: 1,
+      alias: message.user,
+      path: `/${ROUTE_CONSTANTS.PRIVATE.USERS}`,
+      icon: UserOutlined,
     },
   ],
 };

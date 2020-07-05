@@ -23,3 +23,13 @@
   flex:1;
   padding: 20px 0;
 }
+.layout {
+  min-height: 100vh;
+}
+.container-content {
+  margin: 0 20px;
+}
+.content { 
+  padding: 20px; 
+  min-height: 90%;
+}

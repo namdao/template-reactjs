@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import RouteConstants from 'service/routes/constants';
 import Dashboard from 'layout/Dashboard/dashboard';
-import Default from 'layout/Default/default';
 import PropTypes from 'prop-types';
 import ROUTES from 'service/routes/routesList';
 import { getBreadCrumb } from 'utils/utility';
@@ -19,7 +18,6 @@ class PrivateRoute extends React.PureComponent {
       ...rest
     } = this.props || {};
     const redirect = redirectUrl || RouteConstants.PUBLIC.SIGN_IN;
-    const LayoutComponent = authenticated ? Dashboard : Default;
     return (
       <Route
         key={`${keyName}_${index}`}
@@ -28,7 +26,7 @@ class PrivateRoute extends React.PureComponent {
         render={(props) => {
           const crumbs = getBreadCrumb(props, ROUTES.PRIVATE);
           return (
-            <LayoutComponent listBreadCrumb={crumbs}>
+            <Dashboard listBreadCrumb={crumbs}>
               {authenticated === true ? (
                 <Component />
               ) : (
@@ -36,7 +34,7 @@ class PrivateRoute extends React.PureComponent {
                   to={{ pathname: redirect, state: { from: props.location } }}
                 />
               )}
-            </LayoutComponent>
+            </Dashboard>
           );
         }}
       />

@@ -14,7 +14,7 @@ export default defineMessages({
   },
   signin: {
     id: `${scope}.signin`,
-    defaultMessage: 'Đăng nhậpp',
+    defaultMessage: 'Đăng nhập',
   },
   signup: {
     id: `${scope}.signout`,
@@ -26,7 +26,7 @@ export default defineMessages({
   },
   user: {
     id: `${scope}.user`,
-    defaultMessage: 'Cá nhânnnn',
+    defaultMessage: 'Cá nhân',
   },
   dashboard: {
     id: `${scope}.dashboard`,
