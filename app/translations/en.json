@@ -1,5 +1,5 @@
 {
-  "boilerplate.components.Footer.author.message": "Made with love by {author}.",
+  "components.Footer.author.message": "Made with love by {author}.",
   "boilerplate.components.Footer.license.message": "This project is licensed under the MIT license.",
   "boilerplate.components.Header.features": "Features",
   "boilerplate.components.Header.home": "Home",
@@ -32,5 +32,7 @@
   "routing.constant.signin": "Sign In",
   "routing.constant.signout": "Sign Out",
   "routing.constant.notfound": "Not found",
-  "routing.constant.user": "User"
+  "routing.constant.user": "User",
+  "translate.constant.vi": "Vietnamese",
+  "translate.constant.en": "English"
 }

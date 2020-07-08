@@ -5,72 +5,24 @@ import PropTypes from 'prop-types';
  */
 import 'antd/dist/antd.css';
 import './dashboard.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 /**
  * Component
  */
 import Footer from 'components/Footer';
+import MenuBar from './component/MenuBar';
+import Breadcrumbs from './component/Breadcrumbs';
+import LanguageDropdown from './component/LanguageDropdown';
 /**
  * utils
  */
-import ROUTES from 'service/routes/routesList';
-import { FormattedMessage } from 'react-intl';
-import history from 'utils/history';
-
 const { Header, Sider, Content } = Layout;
 
 class Dashboard extends React.Component {
   state = {
     collapsed: false,
   };
-
-  currentMenu = ROUTES.MENU.find(
-    (menu) => menu.path === history.location.pathname,
-  );
-
-  renderBreadCrumb = () => {
-    const { listBreadCrumb } = this.props;
-    if (listBreadCrumb.length < 1) return null;
-    return (
-      <Breadcrumb className="breadcrumb">
-        {listBreadCrumb.map(({ alias, keyName, path }, index) => {
-          const last = listBreadCrumb.length - 1 === index;
-          const hasLink = last ? null : path;
-          return (
-            <Breadcrumb.Item key={keyName}>
-              <a href={hasLink}>
-                {typeof alias === 'object' ? (
-                  <FormattedMessage {...alias} />
-                ) : (
-                  <span>{alias}</span>
-                )}
-              </a>
-            </Breadcrumb.Item>
-          );
-        })}
-      </Breadcrumb>
-    );
-  };
-
-  renderMenu = () => (
-    <Menu
-      theme="dark"
-      mode="inline"
-      defaultSelectedKeys={[this.currentMenu.key.toString()]}
-    >
-      {ROUTES.MENU.map((item) => {
-        const { icon: Icon, alias: menuName, path, key } = item || {};
-        return (
-          <Menu.Item key={key} icon={<Icon />}>
-            <a href={path}>
-              <FormattedMessage {...menuName} />
-            </a>
-          </Menu.Item>
-        );
-      })}
-    </Menu>
-  );
 
   toggle = () => {
     const { collapsed } = this.state;
@@ -86,18 +38,19 @@ class Dashboard extends React.Component {
       <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
-          {this.renderMenu()}
+          <MenuBar />
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
+          <Header className="site-layout-background">
             {collapsed ? (
               <MenuUnfoldOutlined className="trigger" onClick={this.toggle} />
             ) : (
               <MenuFoldOutlined className="trigger" onClick={this.toggle} />
             )}
+            <LanguageDropdown />
           </Header>
           <Content className="content">
-            {this.renderBreadCrumb()}
+            <Breadcrumbs {...this.props} />
             <div className="site-layout-background content">
               {children && children}
             </div>
@@ -110,7 +63,7 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-  children: PropTypes.func,
-  listBreadCrumb: PropTypes.shape([]),
+  children: PropTypes.shape({}),
+  listBreadCrumb: PropTypes.arrayOf(PropTypes.shape({})),
 };
 export default Dashboard;

@@ -1,5 +1,5 @@
 {
-  "boilerplate.components.Footer.author.message": "Tac gia la {author}.",
+  "components.Footer.author.message": "Tac gia la {author}.",
   "boilerplate.components.Footer.license.message": "Dieses Projekt wird unter der MIT-Lizenz veröffentlicht.",
   "boilerplate.components.Header.features": "Tính năng",
   "boilerplate.components.Header.home": "Trang chủ",
@@ -32,5 +32,7 @@
   "routing.constant.signin": "Đăng nhập",
   "routing.constant.signout": "Đăng xuất",
   "routing.constant.notfound": "Không tìm thấy",
-  "routing.constant.user": "Thông tin cá nhân"
+  "routing.constant.user": "Thông tin cá nhân",
+  "translate.constant.vi": "Tiếng việt",
+  "translate.constant.en": "Tiếng Anh"
 }

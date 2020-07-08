@@ -1,10 +1,16 @@
 import styled from 'styled-components';
-
+import colors from 'constants/colors';
 const Wrapper = styled.div`
-  margin: 2em auto;
-  width: 40px;
-  height: 40px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .ant-spin {
+    color: ${colors.dustyOrange};
+  }
+  .ant-spin-dot-item {
+    background-color: ${colors.dustyOrange};
+  }
 `;
 
 export default Wrapper;

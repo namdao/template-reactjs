@@ -32,7 +32,7 @@ import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/e
 import storeConfig from 'storeConfig';
 
 // Import i18n messages
-import Circle from 'components/LoadingIndicator/Circle';
+import Loading from 'components/LoadingIndicator';
 import { translationMessages } from './i18n';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -52,7 +52,7 @@ const MOUNT_NODE = document.getElementById('app');
 const render = (messages) => {
   ReactDOM.render(
     <Provider store={storeConfig.store}>
-      <PersistGate loading={<Circle />} persistor={storeConfig.persistor}>
+      <PersistGate loading={<Loading />} persistor={storeConfig.persistor}>
         <LanguageProvider messages={messages}>
           <ConnectedRouter history={history}>
             <App />
