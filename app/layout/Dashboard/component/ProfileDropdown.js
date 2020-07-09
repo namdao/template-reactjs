@@ -16,6 +16,8 @@ import ROUTE_CONSTANTS from 'service/routes/constants';
  * Locale
  */
 import SignSelectors from 'scenes/Sign/redux/selectors';
+import Img from 'components/Img';
+import Images from 'utils/images';
 import Message from '../message';
 /**
  * styles
@@ -35,16 +37,23 @@ const listProfile = [
     icon: LoginOutlined,
   },
 ];
-const ProfileDropdown = ({ userName }) => (
-  <DropDownList
-    listMenu={listProfile}
-    title={userName}
-    iconLeft={UserOutlined}
-    styleIconLeft={ProfileStyle.iconProfile}
-    theme="light"
-    placement="bottomRight"
-  />
-);
+const ProfileDropdown = ({ userName }) => {
+  const iconAvatar = () => (
+    <Img src={Images.Avatar} alt="avatar" style={ProfileStyle.iconAvatar} />
+  );
+
+  return (
+    <DropDownList
+      listMenu={listProfile}
+      title={userName}
+      iconLeft={iconAvatar}
+      styleIconLeft={ProfileStyle.iconProfile}
+      styleButton={ProfileStyle.containerAvatar}
+      theme="light"
+      placement="bottomRight"
+    />
+  );
+};
 ProfileDropdown.propTypes = {
   userName: PropTypes.string,
 };

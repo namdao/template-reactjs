@@ -21,5 +21,13 @@ const ProfileStyle = {
   iconProfile: {
     verticalAlign: 0,
   },
+  containerAvatar: {
+    padding: 0,
+    borderWidth: 0,
+  },
+  iconAvatar: {
+    width: 30,
+    height: 20,
+  },
 };
 export { MenuItem, LanguageStyle, ProfileStyle };
