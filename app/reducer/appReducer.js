@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import history from 'utils/history';
-import globalReducer from 'containers/App/reducer';
 import dataReducer from './data';
 import serviceReducer from './service';
 /**
@@ -20,7 +19,6 @@ import serviceReducer from './service';
 //     ...injectedReducers,
 //   });
 const rootReducer = combineReducers({
-  global: globalReducer,
   router: connectRouter(history),
   service: serviceReducer,
   data: dataReducer,
