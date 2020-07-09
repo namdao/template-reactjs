@@ -21,7 +21,7 @@
   display: flex;
   flex: 1;
   justify-content: space-between;
-  padding: 10px;
+  padding:10px 15px;
 }
 .breadcrumb {
   flex:1;
@@ -36,4 +36,7 @@
 .content { 
   padding: 0 20px; 
   min-height: 80vh;
+}
+.wrapper {
+  display: flex;
 }

@@ -7,20 +7,29 @@ import Menu from '../Menu';
 const DropDownList = ({
   listMenu,
   title,
-  icon: IconDropDown,
-  onActionDropDown,
-  styleIcon,
+  iconRight: IconDropDownRight,
+  iconLeft: IconDropDownLeft,
+  styleIconLeft,
+  styleIconRight,
+  placement,
+  ...rest
 }) => {
-  const MenuList = () => (
-    <Menu listMenu={listMenu} onAction={onActionDropDown} />
-  );
+  const MenuList = () => <Menu listMenu={listMenu} {...rest} />;
+  const showTitle = () => {
+    if (typeof title === 'object') {
+      if (title?.id) {
+        return <FormattedMessage {...title} />;
+      }
+      return title?.defaultMessage;
+    }
+    return title;
+  };
   return (
-    <DropDownAnt overlay={MenuList}>
+    <DropDownAnt overlay={MenuList} placement={placement}>
       <Button>
-        <span>
-          <FormattedMessage {...title} />
-        </span>
-        <IconDropDown style={styleIcon} />
+        {IconDropDownLeft && <IconDropDownLeft style={styleIconLeft} />}
+        <span>{showTitle()}</span>
+        {IconDropDownRight && <IconDropDownRight style={styleIconRight} />}
       </Button>
     </DropDownAnt>
   );
@@ -28,16 +37,26 @@ const DropDownList = ({
 
 DropDownList.propTypes = {
   listMenu: PropTypes.array,
-  title: PropTypes.object,
-  icon: PropTypes.object,
-  onActionDropDown: PropTypes.func,
-  styleIcon: PropTypes.shape({}),
+  title: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  iconRight: PropTypes.object,
+  iconLeft: PropTypes.object,
+  styleIconLeft: PropTypes.shape({}),
+  styleIconRight: PropTypes.shape({}),
+  placement: PropTypes.oneOf([
+    'bottomLeft',
+    'bottomCenter',
+    'bottomRight',
+    'topLeft',
+    'topRight',
+  ]),
 };
 DropDownList.defaultProps = {
   listMenu: [],
   title: '',
-  icon: null,
-  onActionDropDown: null,
-  styleIcon: null,
+  iconRight: null,
+  iconLeft: null,
+  styleIconLeft: null,
+  styleIconRight: null,
+  placement: 'bottomLeft',
 };
 export default memo(DropDownList);

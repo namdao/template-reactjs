@@ -44,13 +44,13 @@ const ROUTES = {
   ],
   MENU: [
     {
-      key: 0,
+      key: message.dashboard.id,
       alias: message.dashboard,
       path: '/',
       icon: HomeFilled,
     },
     {
-      key: 1,
+      key: message.user.id,
       alias: message.user,
       path: `/${ROUTE_CONSTANTS.PRIVATE.USERS}`,
       icon: UserOutlined,

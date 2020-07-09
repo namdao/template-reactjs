@@ -11,5 +11,15 @@ const LanguageStyle = {
   iconLanguage: {
     verticalAlign: 0,
   },
+  iconFlag: {
+    width: 20,
+    height: 20,
+    paddingRight: 7,
+  },
 };
-export { MenuItem, LanguageStyle };
+const ProfileStyle = {
+  iconProfile: {
+    verticalAlign: 0,
+  },
+};
+export { MenuItem, LanguageStyle, ProfileStyle };

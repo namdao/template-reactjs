@@ -11,9 +11,11 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
  * Component
  */
 import Footer from 'components/Footer';
+import Spacing from 'components/Spacing';
 import MenuBar from './component/MenuBar';
 import Breadcrumbs from './component/Breadcrumbs';
 import LanguageDropdown from './component/LanguageDropdown';
+import ProfileDropdown from './component/ProfileDropdown';
 /**
  * utils
  */
@@ -42,12 +44,18 @@ class Dashboard extends React.Component {
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background">
-            {collapsed ? (
-              <MenuUnfoldOutlined className="trigger" onClick={this.toggle} />
-            ) : (
-              <MenuFoldOutlined className="trigger" onClick={this.toggle} />
-            )}
-            <LanguageDropdown />
+            <div className="wrapper">
+              {collapsed ? (
+                <MenuUnfoldOutlined className="trigger" onClick={this.toggle} />
+              ) : (
+                <MenuFoldOutlined className="trigger" onClick={this.toggle} />
+              )}
+            </div>
+            <div className="wrapper">
+              <ProfileDropdown />
+              <Spacing />
+              <LanguageDropdown />
+            </div>
           </Header>
           <Content className="content">
             <Breadcrumbs {...this.props} />
