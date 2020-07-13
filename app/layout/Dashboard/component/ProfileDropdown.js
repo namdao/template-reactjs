@@ -8,9 +8,10 @@ import PropTypes from 'prop-types';
 import DropDownList from 'components/DropDown';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 /**
- * utils
+ * actions
  */
 import { changeLocale } from 'service/language/actions';
+import { logout } from 'service/commonService/actions';
 import ROUTE_CONSTANTS from 'service/routes/constants';
 /**
  * Locale
@@ -18,26 +19,28 @@ import ROUTE_CONSTANTS from 'service/routes/constants';
 import SignSelectors from 'scenes/Sign/redux/selectors';
 import Img from 'components/Img';
 import Images from 'utils/images';
+import { doNothing } from 'utils/utility';
 import Message from '../message';
 /**
  * styles
  */
 import { ProfileStyle } from './styles';
 
-const listProfile = [
-  {
-    key: Message.user_info.id,
-    alias: Message.user_info,
-    icon: UserOutlined,
-    path: `/${ROUTE_CONSTANTS.PRIVATE.USERS}`,
-  },
-  {
-    key: Message.user_logout.id,
-    alias: Message.user_logout,
-    icon: LoginOutlined,
-  },
-];
-const ProfileDropdown = ({ userName }) => {
+const ProfileDropdown = ({ userName, logout: logOutApp }) => {
+  const listProfile = [
+    {
+      key: Message.user_info.id,
+      alias: Message.user_info,
+      icon: UserOutlined,
+      path: `/${ROUTE_CONSTANTS.PRIVATE.USERS}`,
+    },
+    {
+      key: Message.user_logout.id,
+      alias: Message.user_logout,
+      icon: LoginOutlined,
+      onAction: logOutApp,
+    },
+  ];
   const iconAvatar = () => (
     <Img src={Images.Avatar} alt="avatar" style={ProfileStyle.iconAvatar} />
   );
@@ -56,9 +59,11 @@ const ProfileDropdown = ({ userName }) => {
 };
 ProfileDropdown.propTypes = {
   userName: PropTypes.string,
+  logout: PropTypes.func,
 };
 ProfileDropdown.defaultProps = {
   userName: '',
+  logout: doNothing,
 };
 const mapStateToProps = (state) => ({
   userName: SignSelectors.getUserName(state),
@@ -68,6 +73,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       changeLocale,
+      logout,
     },
     dispatch,
   );

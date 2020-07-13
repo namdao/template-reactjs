@@ -10,6 +10,8 @@ const initialState = {
 const sessionReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
+      case 'RESET_ALL_STATE':
+        return initialState;
       case types.UPDATE_TOKEN: {
         draft.token = action.payload;
         break;
